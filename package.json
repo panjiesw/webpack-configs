@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "description": "Various slightly opinionated shared webpack configurations",
   "main": "index.js",
+  "license": "MIT",
+	"engines": {
+		"node": ">=6"
+	},
   "repository": "https://github.com/panjiesw/webpack-configs.git",
   "author": "Panjie Setiawan Wicaksono <panjie@panjiesw.com>",
-  "license": "MIT",
-  "optionalDependencies": {
-    "webpack-merge": "^2.6.1"
-  },
   "devDependencies": {
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "webpack-merge": "^2.6.1"
   }
 }
