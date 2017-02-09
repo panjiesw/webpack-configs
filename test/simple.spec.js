@@ -51,7 +51,7 @@ test('javascript:lint', (t) => {
 });
 
 test('style', (t) => {
-	const style = configs.style({test: /\.css$/});
+	const style = configs.style({ test: /\.css$/ });
 	let config = merge(common(), style);
 	let errors = webpack.validate(config);
 	t.equal(errors.length, 0, 'style: must pass validation');
@@ -85,4 +85,6 @@ test('typescript', (t) => {
 	const errors = webpack.validate(config);
 	t.equal(errors.length, 0, 'must pass validation');
 	t.fail('TODO typescript:returned config check');
+
+	t.end();
 });

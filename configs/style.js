@@ -5,7 +5,7 @@
 
 const merge = require('webpack-merge');
 
-const createStyleConfig = () => {
+const createStyleConfigurator = () => {
 	const style = ({test, include, exclude}) => {
 		const config = {
 			module: {
@@ -88,4 +88,4 @@ const createStyleConfig = () => {
 	return style;
 }
 
-module.exports = createStyleConfig();
+module.exports = createStyleConfigurator();

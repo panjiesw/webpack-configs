@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-const createJsConfig = () => {
+const createJsConfigurator = () => {
 	const javascript = ({include, exclude, options} = {}) => ({
 		module: {
 			rules: [{
@@ -34,4 +34,4 @@ const createJsConfig = () => {
 	return javascript;
 }
 
-module.exports = createJsConfig();
+module.exports = createJsConfigurator();
