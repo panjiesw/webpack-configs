@@ -12,10 +12,10 @@ module.exports = ({
 	historyApiFallback = true,
 	stats = 'errors-only',
 	publicPath = '/',
-	contentBase = utils.resolve('public'),
+	contentBase = utils.resolve(['public']),
 	hotOnly = true,
 	hot = false
-}) => ({
+} = {}) => ({
 	devServer: {
 		host,
 		port,
