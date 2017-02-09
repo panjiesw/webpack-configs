@@ -71,7 +71,7 @@ shared.style(options)
   .use(shared.style.post());
 ```
 
-This configurations are best used with `webpack-merge`.
+These configurations are best used with `webpack-merge`.
 
 ```javascript
 // webpack.config.js
@@ -255,10 +255,10 @@ _**NOTES**_: You must add `style-loader` dependency to use this.
   - `test` - Resource [test](https://webpack.js.org/configuration/module/#rule-test)
 - methods:
   - `use(loader, options?)` - Chain `style-loader` with other commonly used style related loaders.
-    - **required** `loader` - The loader to use, e.g `'css-loader'`. Or one of predefined loaders described below.
-    - [optional] options - Options passed to the loader.
+      - **required** `loader` - The loader to use, e.g `'css-loader'`. Or one of predefined loaders described below.
+      - [optional] options - Options passed to the loader.
   - `extract(options?)` - Transform the configuration to use `extract-text-webpack-plugin`. More info [below](#using-extract-text-webpack-plugin).
-    - [optional] options - [Options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) passed to instantiate the `extract-text-webpack-plugin`.
+      - [optional] options - [Options](https://github.com/webpack-contrib/extract-text-webpack-plugin#options) passed to instantiate the `extract-text-webpack-plugin`.
 
 ```javascript
 shared.style({test: /\.css$/}) ===
