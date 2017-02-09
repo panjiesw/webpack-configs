@@ -1,9 +1,15 @@
 {
  "name": "webpack-configs",
- "version": "0.1.0",
+ "version": "0.1.1",
  "description": "Various slightly opinionated shared webpack configurations",
  "main": "index.js",
  "license": "MIT",
+ "keywords": [
+   "webpack",
+   "shared",
+   "configs",
+   "merge"
+ ],
  "files": [
   "index.js",
   "configs"
