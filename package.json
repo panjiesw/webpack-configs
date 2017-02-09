@@ -11,8 +11,18 @@
  "engines": {
   "node": ">=6"
  },
- "repository": "https://github.com/panjiesw/webpack-configs.git",
- "author": "Panjie Setiawan Wicaksono <panjie@panjiesw.com>",
+ "repository": {
+   "type": "git",
+   "url": "git+https://github.com/panjiesw/webpack-configs.git"
+ },
+ "bugs": {
+   "url": "https://github.com/panjiesw/webpack-configs/issues"
+ },
+ "author": {
+   "name": "Panjie Setiawan Wicaksono",
+   "email": "panjie@panjiesw.com",
+   "url": "https://panjiesw.life"
+ },
  "scripts": {
   "test": "tape 'test/**/*.spec.js' | tap-spec",
   "watch": "tape-watch 'test/**/*.spec.js' | tap-spec"
@@ -31,8 +41,5 @@
  },
  "peerDependencies": {
   "webpack": ">=2.2.0"
- },
- "optionalDependencies": {
-  "extract-text-webpack-plugin": "^2.0.0-rc.3"
  }
 }
