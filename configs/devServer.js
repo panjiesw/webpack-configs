@@ -4,6 +4,7 @@
 // https://opensource.org/licenses/MIT
 
 const utils = require('./utils');
+const webpack = require('webpack');
 
 module.exports = ({
 	host = process.env.HOST,
@@ -24,5 +25,8 @@ module.exports = ({
 		contentBase,
 		hotOnly,
 		hot,
-	}
+	},
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+	],
 })
