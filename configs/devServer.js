@@ -9,8 +9,8 @@ const utils = require('./utils');
 
 module.exports = (options = {}) => {
 	const {
-		host = process.env.HOST,
-		port = process.env.PORT,
+		host = process.env.HOST || 'localhost',
+		port = process.env.PORT || 8080,
 		historyApiFallback = true,
 		stats = 'errors-only',
 		publicPath = '/',

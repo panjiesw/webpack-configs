@@ -3,18 +3,22 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-module.exports = ({include, exclude, options} = {}) => ({
-	module: {
-		rules: [{
-			test: /\.ts(x?)$/,
-			loader: 'awesome-typescript-loader',
-			include,
-			exclude,
-			options,
-		}]
-	},
-	plugins: [
-		new require('awesome-typescript-loader').CheckerPlugin(),
-		new require('awesome-typescript-loader').TsConfigPathsPlugin()
-	]
-});
+module.exports = ({include, exclude, options} = {}) => {
+	const {CheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
+
+	return {
+		module: {
+			rules: [{
+				test: /\.ts(x?)$/,
+				loader: 'awesome-typescript-loader',
+				include,
+				exclude,
+				options,
+			}]
+		},
+		plugins: [
+			new CheckerPlugin(),
+			new TsConfigPathsPlugin()
+		]
+	}
+};
