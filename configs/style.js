@@ -6,6 +6,17 @@
 const merge = require('webpack-merge');
 
 const createStyleConfigurator = () => {
+	const methods = (rule, config) => {
+		Object.defineProperties(config, {
+			use: {
+				value: use.bind(null, rule, config),
+			},
+			extract: {
+				value: extract.bind(null, rule, config),
+			}
+		})
+	}
+
 	const style = ({test, include, exclude}) => {
 		const config = {
 			module: {
@@ -16,20 +27,12 @@ const createStyleConfigurator = () => {
 			plugins: []
 		};
 
-		Object.defineProperties(config, {
-			use: {
-				value: use.bind(null, { include, exclude, test }, config),
-			},
-			extract: {
-				value: extract.bind(null, { include, exclude, test }, config),
-			}
-		})
-
+		methods({ test, include, exclude }, config);
 		return config;
 	}
 
 	const use = (rule, config, loader, options) => {
-		let use = [{loader, options}];
+		let use = [{ loader, options }];
 		if (typeof loader === 'object') {
 			use = loader;
 		}
@@ -43,6 +46,8 @@ const createStyleConfigurator = () => {
 				}]
 			}
 		});
+
+		methods(rule, _config);
 		return _config;
 	}
 
@@ -79,10 +84,10 @@ const createStyleConfigurator = () => {
 	const post = (options) => [{ loader: 'postcss-loader', options }];
 
 	Object.defineProperties(style, {
-		css: {value: css},
-		less: {value: less},
-		sass: {value: sass},
-		post: {value: post},
+		css: { value: css },
+		less: { value: less },
+		sass: { value: sass },
+		post: { value: post },
 	})
 
 	return style;

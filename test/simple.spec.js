@@ -77,6 +77,13 @@ test('style', (t) => {
 	t.equal(errors.length, 0, 'post: must pass validation');
 	t.fail('TODO style:post:returned config check');
 
+	config = merge(common(), style
+		.use(configs.style.css())
+		.use(configs.style.post()));
+	errors = webpack.validate(config);
+	t.equal(errors.length, 0, 'chain: must pass validation');
+	t.fail('TODO style:chain:returned config check');
+
 	t.end();
 });
 
