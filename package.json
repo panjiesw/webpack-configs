@@ -1,6 +1,6 @@
 {
  "name": "webpack-configs",
- "version": "0.1.1",
+ "version": "0.1.2",
  "description": "Various slightly opinionated shared webpack configurations",
  "main": "index.js",
  "license": "MIT",
