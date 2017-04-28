@@ -15,6 +15,7 @@ Particularly useful with tools like [webpack-merge](https://www.npmjs.com/packag
 		- [`javascript(options?: {include?, exclude?, options?})`](#javascriptoptions-include-exclude-options)
 		- [`javascript.lint(options?: {include?, exclude?, options?})`](#javascriptlintoptions-include-exclude-options)
 		- [`typescript(options?: {include?, exclude?, options?})`](#typescriptoptions-include-exclude-options)
+		- [`typescript.sourcemap()`](#typescriptsourcemap)
 		- [`style(options: {test, include, exclude})`](#styleoptions-test-include-exclude)
 			- [`style.css(options?)`](#stylecssoptions)
 			- [`style.post(options?)`](#stylepostoptions)
@@ -146,7 +147,8 @@ Returns webpack configuration which include `devServer` and `webpack.HotModuleRe
   - `stats` - defaults to `'errors-only'`
   - `publicPath` - defaults to `'/'`
   - `contentBase` - defaults to `public` dir relative to `process.cwd()`
-  - `hotOnly` - defaults to `true`
+  - `hotOnly` - defaults to `false`
+  - `hot` - defaults to `false`
 
 ```javascript
 shared.devServer() ===
@@ -240,6 +242,23 @@ shared.typescript({include: path.resolve(__dirname, 'src')}) ===
     new require('awesome-typescript-loader').CheckerPlugin(),
     new require('awesome-typescript-loader').TsConfigPathsPlugin()
   ]
+}
+```
+
+### `typescript.sourcemap()`
+
+Add sourcemap loader support as mentioned in [Webpack + Typescript Guide](https://webpack.js.org/guides/webpack-and-typescript/#enabling-source-maps)
+
+```javascript
+shared.typescript.sourcemap() ===
+{
+  module: {
+    rules: [{
+      test: /\.ts(x?)$/,
+      enforce: 'pre',
+      use: 'source-map-loader'
+    }]
+  }
 }
 ```
 

@@ -1,24 +1,46 @@
-// Copyright (c) 2017 Panjie Setiawan Wicaksono
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
+/**
+ * Copyright (c) 2017 Panjie Setiawan Wicaksono <panjie@panjiesw.com>
+ *
+ * This software is released under the MIT License.
+ * https://panjiesw.mit-license.org
+ */
 
-module.exports = ({include, exclude, options} = {}) => {
-	const {CheckerPlugin, TsConfigPathsPlugin} = require('awesome-typescript-loader');
+const createTsConfigurator = () => {
+	const typescript = ({ include, exclude, options } = {}) => {
+		const { CheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
-	return {
+		return {
+			module: {
+				rules: [{
+					test: /\.ts(x?)$/,
+					loader: 'awesome-typescript-loader',
+					include,
+					exclude,
+					options,
+				}]
+			},
+			plugins: [
+				new CheckerPlugin(),
+				new TsConfigPathsPlugin()
+			]
+		}
+	};
+
+	// Enable sourcemap
+	// See https://webpack.js.org/guides/webpack-and-typescript/#enabling-source-maps
+	const sourcemap = () => ({
 		module: {
 			rules: [{
 				test: /\.ts(x?)$/,
-				loader: 'awesome-typescript-loader',
-				include,
-				exclude,
-				options,
+				enforce: 'pre',
+				use: 'source-map-loader'
 			}]
-		},
-		plugins: [
-			new CheckerPlugin(),
-			new TsConfigPathsPlugin()
-		]
-	}
-};
+		}
+	});
+
+	Object.defineProperty(typescript, 'sourcemap', { value: sourceMap });
+
+	return typescript;
+}
+
+module.exports = createTsConfigurator();

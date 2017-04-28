@@ -6,10 +6,10 @@
 	"editor.detectIndentation": true,
 	"editor.renderWhitespace": "boundary",
 	"editor.rulers": [
-		120
+		80
 	],
-	"editor.wrappingColumn": 120,
-	"editor.snippetSuggestions": "top",
+	"editor.wordWrapColumn": 80,
+	"editor.wordWrap": "wordWrapColumn",
 	"eslint.enable": false,
 	"files.trimTrailingWhitespace": true,
 	"files.insertFinalNewline": true,
@@ -19,7 +19,6 @@
 		"**/.idea": true,
 		"**/.iml": true
 	},
-	"licenser.author": "Panjie Setiawan Wicaksono",
 	"licenser.projectName": "webpack-configs",
 	"licenser.license": "MIT",
 	"stylelint.enable": false,

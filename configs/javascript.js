@@ -1,10 +1,12 @@
-// Copyright (c) 2017 Panjie Setiawan Wicaksono
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
+/**
+ * Copyright (c) 2017 Panjie Setiawan Wicaksono <panjie@panjiesw.com>
+ *
+ * This software is released under the MIT License.
+ * https://panjiesw.mit-license.org
+ */
 
 const createJsConfigurator = () => {
-	const javascript = ({include, exclude, options} = {}) => ({
+	const javascript = ({ include, exclude, options } = {}) => ({
 		module: {
 			rules: [{
 				test: /\.js(x?)$/,
@@ -16,7 +18,7 @@ const createJsConfigurator = () => {
 		}
 	});
 
-	const lint = ({include, exclude, options} = {}) => ({
+	const lint = ({ include, exclude, options } = {}) => ({
 		module: {
 			rules: [{
 				test: /\.js(x?)$/,
@@ -29,7 +31,7 @@ const createJsConfigurator = () => {
 		}
 	});
 
-	Object.defineProperty(javascript, 'lint', {value: lint});
+	Object.defineProperty(javascript, 'lint', { value: lint });
 
 	return javascript;
 }
