@@ -38,7 +38,7 @@ const createTsConfigurator = () => {
 		}
 	});
 
-	Object.defineProperty(typescript, 'sourcemap', { value: sourceMap });
+	Object.defineProperty(typescript, 'sourcemap', { value: sourcemap });
 
 	return typescript;
 }
