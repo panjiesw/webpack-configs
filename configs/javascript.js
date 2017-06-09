@@ -31,7 +31,19 @@ const createJsConfigurator = () => {
 		}
 	});
 
+	// See https://webpack.js.org/guides/webpack-and-typescript/#enabling-source-maps
+	const sourcemap = () => ({
+		module: {
+			rules: [{
+				test: /\.js(x?)$/,
+				enforce: 'pre',
+				use: 'source-map-loader'
+			}]
+		}
+	});
+
 	Object.defineProperty(javascript, 'lint', { value: lint });
+	Object.defineProperty(javascript, 'sourcemap', { value: sourcemap });
 
 	return javascript;
 }

@@ -14,8 +14,10 @@ Particularly useful with tools like [webpack-merge](https://www.npmjs.com/packag
 		- [`devServer(options?: DevServer)`](#devserveroptions-devserver)
 		- [`javascript(options?: {include?, exclude?, options?})`](#javascriptoptions-include-exclude-options)
 		- [`javascript.lint(options?: {include?, exclude?, options?})`](#javascriptlintoptions-include-exclude-options)
+		- [`javascript.sourcemap()`](#javascriptsourcemap)
 		- [`typescript(options?: {include?, exclude?, options?})`](#typescriptoptions-include-exclude-options)
 		- [`typescript.sourcemap()`](#typescriptsourcemap)
+		- [`typescript.hmr(options?: {include?, exclude?, options?, tsOptions?})`](#typescripthmroptions-include-exclude-options-tsoptions)
 		- [`style(options: {test, include, exclude})`](#styleoptions-test-include-exclude)
 			- [`style.css(options?)`](#stylecssoptions)
 			- [`style.post(options?)`](#stylepostoptions)
@@ -217,6 +219,23 @@ shared.javascript.lint({include: path.resolve(__dirname, 'src')}) ===
 }
 ```
 
+### `javascript.sourcemap()`
+
+Add sourcemap loader support as mentioned in [Webpack + Typescript Guide](https://webpack.js.org/guides/webpack-and-typescript/#enabling-source-maps)
+
+```javascript
+shared.javascript.sourcemap() ===
+{
+  module: {
+    rules: [{
+      test: /\.js(x?)$/,
+      enforce: 'pre',
+      use: 'source-map-loader'
+    }]
+  }
+}
+```
+
 ### `typescript(options?: {include?, exclude?, options?})`
 
 Returns webpack configuration which include `module.rules` with `awesome-typescript-loader`.
@@ -257,6 +276,28 @@ shared.typescript.sourcemap() ===
       test: /\.ts(x?)$/,
       enforce: 'pre',
       use: 'source-map-loader'
+    }]
+  }
+}
+```
+
+### `typescript.hmr(options?: {include?, exclude?, options?, tsOptions?})`
+
+Add React Hot Loader 3 into typescript build pipeline.
+
+```javascript
+shared.typescript.hmr() ===
+{
+  module: {
+    rules: [{
+      test: /\.ts(x?)$/,
+      use: [
+        'react-hot-loader/webpack',
+        {
+          loader: 'awesome-typescript-loader',
+          options: tsOptions,
+        }
+      ],
     }]
   }
 }

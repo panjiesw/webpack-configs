@@ -26,6 +26,28 @@ const createTsConfigurator = () => {
 		}
 	};
 
+	const hmr = ({ include, exclude, options, tsOptions } = {}) => {
+		const { CheckerPlugin, TsConfigPathsPlugin } = require('awesome-typescript-loader');
+
+		return {
+			module: {
+				rules: [{
+					include,
+					exclude,
+					options,
+					test: /\.ts(x?)$/,
+					use: [
+						'react-hot-loader/webpack',
+						{
+							loader: 'awesome-typescript-loader',
+							options: tsOptions,
+						}
+					],
+				}]
+			}
+		};
+	}
+
 	// Enable sourcemap
 	// See https://webpack.js.org/guides/webpack-and-typescript/#enabling-source-maps
 	const sourcemap = () => ({
@@ -39,6 +61,7 @@ const createTsConfigurator = () => {
 	});
 
 	Object.defineProperty(typescript, 'sourcemap', { value: sourcemap });
+	Object.defineProperty(typescript, 'hmr', { value: hmr });
 
 	return typescript;
 }
